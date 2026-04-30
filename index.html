@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmad Zaidan | Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #01bde2;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --card-bg: rgba(255, 255, 255, 0.8);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      /* NAVIGATION */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 8%;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+      nav h3 {
+        font-weight: 700;
+        color: var(--primary);
+      }
+      nav a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: var(--dark);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      /* HERO SECTION WITH ABSTRACT IMAGE */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8%;
+        gap: 50px;
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+      .hero-content h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+      .hero-content span {
+        color: var(--primary);
+      }
+
+      .hero-image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        position: relative;
+      }
+
+      /* Bingkai Foto Abstrak */
+      .profile-blob {
+        width: 350px;
+        height: 350px;
+        background: var(--primary);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Bentuk abstrak */
+        position: relative;
+        overflow: hidden;
+        animation: blob-anim 8s ease-in-out infinite alternate;
+        border: 5px solid white;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-blob img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @keyframes blob-anim {
+        from {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        to {
+          border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
+      }
+
+      /* SKILLS CAROUSEL (3 ROWS) */
+      .skills-section {
+        padding: 100px 0;
+        background: #fff;
+        overflow: hidden;
+      }
+      .skills-section h2 {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .marquee-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .marquee {
+        display: flex;
+        user-select: none;
+        gap: 20px;
+        width: fit-content;
+      }
+
+      .marquee-item {
+        padding: 15px 30px;
+        background: var(--light);
+        border: 1px solid #e2e8f0;
+        border-radius: 50px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .marquee-item:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      /* Animasi Gerak */
+      .move-left {
+        animation: scroll-left 30s linear infinite;
+      }
+      .move-right {
+        animation: scroll-right 35s linear infinite;
+      }
+      .move-left-slow {
+        animation: scroll-left 45s linear infinite;
+      }
+
+      @keyframes scroll-left {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes scroll-right {
+        from {
+          transform: translateX(-50%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      /* GET IN TOUCH (CENTERED) */
+      .contact {
+        padding: 100px 8%;
+        text-align: center;
+        background: var(--dark);
+        color: white;
+      }
+
+      .contact-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .contact-card {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        min-width: 200px;
+        transition: 0.3s;
+      }
+
+      .contact-card:hover {
+        background: var(--primary);
+        transform: translateY(-10px);
+      }
+
+      .contact-card i {
+        font-size: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 12px 30px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column-reverse;
+          text-align: center;
+          padding-top: 120px;
+        }
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        .profile-blob {
+          width: 250px;
+          height: 250px;
+        }
+      }
+
+      /* Container & Global Spacing */
+      .container {
+        width: 85%;
+        margin: 0 auto;
+      }
+      .section-padding {
+        padding: 80px 0;
+      }
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: var(--primary);
+        margin-top: 10px;
+      }
+
+      /* Pendidikan Perbaikan */
+      .edu-card-custom {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      .edu-img-wrapper {
+        flex: 1;
+        min-width: 300px;
+      }
+      .edu-img-wrapper img {
+        width: 100%;
+        border-radius: 15px;
+        display: block;
+      }
+      .edu-info-content {
+        flex: 2;
+      }
+      .highlight-text {
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+      .sub-heading {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+      .text-muted {
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+
+      /* Pengalaman Perbaikan */
+      .main-card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-left: 5px solid var(--primary);
+      }
+      .badge-blue {
+        background: rgba(1, 189, 226, 0.1);
+        color: var(--primary);
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .list-desc {
+        margin-top: 20px;
+        padding-left: 20px;
+      }
+
+      /* Sertifikasi 3 Kolom Perbaikan */
+      #certifications {
+        background: #fff;
+      }
+      .cert-grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Paksa 3 Kolom */
+        gap: 25px;
+      }
+      .cert-item-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+      .cert-item-card:hover {
+        transform: translateY(-10px);
+      }
+      .cert-img-box {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+      }
+      .cert-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .cert-body {
+        padding: 20px;
+      }
+
+      /* Responsive Mobile */
+      @media (max-width: 992px) {
+        .cert-grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .edu-card-custom {
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        .cert-grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .container {
+          width: 90%;
+        }
+      }
+
+      /* Projects Grid 3 Column */
+      #project {
+        background: #fff;
+      }
+      .project-grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-img-container {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+      }
+
+      .project-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-card:hover .project-img-container img {
+        transform: scale(1.1);
+      }
+
+      /* Overlay Effect */
+      .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(1, 189, 226, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+
+      .view-project {
+        color: white;
+        font-weight: 600;
+        padding: 10px 20px;
+        border: 2px solid white;
+        border-radius: 50px;
+      }
+
+      .project-info {
+        padding: 25px;
+      }
+
+      .project-tag {
+        font-size: 0.75rem;
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .project-info h3 {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
+
+      .project-info p {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.6;
+      }
+
+      /* Responsif untuk Project */
+      @media (max-width: 992px) {
+        .project-grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 650px) {
+        .project-grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h3>ZAIDAN.</h3>
+      <div>
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#project">Project</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Halo, Saya <br /><span>Ahmad Zaidan</span></h1>
+        <p>Informatic Fresh Graduate | pengelolaan Data</p>
+        <!-- <p>Lulusan Teknik Informatika | Universitas Nurdin Hamzah</p> -->
+        <a href="Zaidan CV Resume.pdf" class="btn">Download CV</a>
+      </div>
+      <div class="hero-image-container">
+        <div class="profile-blob">
+          <!-- GANTI URL DI BAWAH DENGAN FOTO KAMU -->
+          <img src="profile.png" alt="Ahmad Zaidan" />
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+      <h2>Expertise & Skills</h2>
+
+      <div class="marquee-container">
+        <!-- Baris 1: Bergerak ke Kiri -->
+        <div class="marquee move-left">
+          <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
+          <div class="marquee-item"><i class="fas fa-file-powerpoint"></i> Power Point</div>
+          <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
+          <div class="marquee-item">Tailwind CSS</div>
+          <div class="marquee-item">Microsoft Word</div>
+          <!-- Duplicate untuk efek infinite loop -->
+          <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
+          <div class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+          <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
+          <div class="marquee-item">Tailwind CSS</div>
+          <div class="marquee-item">Microsoft Word</div>
+        </div>
+
+        <!-- Baris 2: Bergerak ke Kanan -->
+        <div class="marquee move-right">
+          <div class="marquee-item">
+            <i class="fas fa-file-excel"></i> Microsoft Excel
+          </div>
+          <div class="marquee-item">Canva Design</div>
+          <div class="marquee-item">Google Workspace</div>
+          <div class="marquee-item">Data Entry</div>
+          <div class="marquee-item">Document Controller</div>
+          <!-- Duplicate -->
+          <div class="marquee-item">
+            <i class="fas fa-file-excel"></i> Microsoft Excel
+          </div>
+          <div class="marquee-item">Canva Design</div>
+          <div class="marquee-item">Google Workspace</div>
+          <div class="marquee-item">Data Entry</div>
+          <div class="marquee-item">Document Controller</div>
+        </div>
+
+        <!-- Baris 3: Soft Skills (Lambat ke Kiri) --> 
+        <div class="marquee move-left-slow">
+          <div class="marquee-item">Kerja Tim</div>
+          <div class="marquee-item">Komunikasi Efektif</div>
+          <div class="marquee-item">Problem Solving</div>
+          <div class="marquee-item">Adaptabilitas</div>
+          <div class="marquee-item"><i class="fas fa-file-word"></i>Microsoft Word</div>
+          <!-- Duplicate -->
+          <div class="marquee-item">Kerja Tim</div>
+          <div class="marquee-item">Komunikasi Efektif</div>
+          <div class="marquee-item">Problem Solving</div>
+          <div class="marquee-item">Adaptabilitas</div>
+          <div class="marquee-item">Fast Learner</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PENDIDIKAN -->
+    <section id="education" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Pendidikan</h2>
+        <div class="edu-card-custom">
+          <div class="edu-img-wrapper">
+            <img src="profilependidikan.JPG" alt="Education" />
+          </div>
+          <div class="edu-info-content">
+            <h3 class="highlight-text">Teknik Informatika</h3>
+            <p class="sub-heading">Universitas Nurdin Hamzah</p>
+            <p class="text-muted">S.Kom 2021 - 2025</p>
+            <p class="text-muted">IPK 3.72</p>
+            <p class="description">
+              Memiliki fokus dalam pengelolaan basis data dan analisis sistem
+              dengan tujuan menciptakan solusi yang efektif, akurat, dan
+              berorientasi pada kebutuhan pengguna.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="project" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid-3">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="saw.png" alt="E-Commerce Laravel" />
+              <!-- <div class="project-overlay">
+                <span class="view-project">View Detail</span>
+              </div> -->
+            </div>
+            <div class="project-info">
+              <span class="project-tag">Dummy Project</span>
+              <h3>Smart Decision System: Pemilihan Pegawai Terbaik</h3>
+              <p>
+                Sistem pemilihan pegawai terbaik menggunakan metode SAW.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="dashboardExcel1.jpg" alt="Dashboard Excel" />
+              <!-- <div class="project-overlay">
+                <span class="view-project">View Detail</span>
+              </div> -->
+            </div>
+            <div class="project-info">
+              <span class="project-tag"> Dummy | Sales Dashboard</span>
+              <h3>Sales Dashboard Excel</h3>
+              <p>
+                Visualisasi data interaktif menggunakan Pivot Table untuk
+                analisis performa sales.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-img-container">
+              <img src="dashboardExcel2.jpg" alt="Sistem Manajemen Siaran" />
+              <!-- <div class="project-overlay">
+                <span class="view-project">View Detail</span>
+              </div> -->
+            </div>
+            <div class="project-info">
+              <span class="project-tag">Dummy | Dashboard Excel</span>
+              <h3>DASHBOARD KEUANGAN (FINANCIAL)</h3>
+              <p>
+                Visualisasi data interaktif menggunakan Pivot Table untuk
+                analisis performa bulanan financial.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PENGALAMAN -->
+    <section id="experience" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Pengalaman Kerja</h2>
+        <div class="experience-grid">
+          <div class="main-card">
+            <span class="badge-blue">Internship</span>
+            <h3>Intern - Dinas Perpustakaan Dan Arsip Daerah Provinsi Jambi</h3>
+            <p class="text-muted">Agustus 2024 - Oktober 2024</p>
+            <ul class="list-desc">
+              <li>Mengelola data arsip digital dan fisik secara sistematis.</li>
+              <li>
+                Menyusun Standar Operasional Prosedur (SOP) pengelolaan data.
+              </li>
+              <li>
+                Membantu dalam pembuatan laporan bulanan menggunakan Excel.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERTIFIKASI -->
+    <section id="certifications" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Sertifikasi</h2>
+        <div class="cert-grid-3">
+          <!-- Sertifikat 1 -->
+          <div class="cert-item-card">
+            <div class="cert-img-box">
+              <img src="bnsp.jpg" alt="BNSP" />
+            </div>
+            <div class="cert-body">
+              <h4>Sertifikasi BNSP</h4>
+              <p>Kompetensi Bidang Teknologi Informasi</p>
+            </div>
+          </div>
+          <!-- Sertifikat 2 -->
+          <div class="cert-item-card">
+            <div class="cert-img-box">
+              <img src="ioe.png" alt="Microsoft AI" />
+            </div>
+            <div class="cert-body">
+              <h4>AI Fluency Training With Microsoft</h4>
+              <p>Pengenalan Kecerdasan Buatan & Cloud</p>
+            </div>
+          </div>
+          <!-- Sertifikat 3 -->
+          <div class="cert-item-card">
+            <div class="cert-img-box">
+              <img src="ujikom.jpg" alt="Kompetensi" />
+            </div>
+            <div class="cert-body">
+              <h4>Kompetensi Komputer</h4>
+              <p>Kompetensi Bidang Teknologi Informasi</p>
+            </div>
+          </div>
+          <!-- Sertifikat 4 -->
+          <div class="cert-item-card">
+            <div class="cert-img-box">
+              <img src="dqlab.jpg" alt="dqlab" />
+            </div>
+            <div class="cert-body">
+              <h4>Data Analytics Batch 11</h4>
+              <p>DQLab</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Get In Touch</h2>
+      <p>Mari berdiskusi tentang Anda selanjutnya.</p>
+
+      <div class="contact-grid">
+        <a href="mailto:ahzaidann@gmail.com" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <span>Email Me</span>
+          <small>ahzaidann@gmail.com</small>
+        </a>
+        <a href="https://linkedin.com/in/zaidann" class="contact-card">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+          <small>Ahmad Zaidan</small>
+        </a>
+        <a href="https://wa.me/62895703052721" class="contact-card">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+          <small>Kirim Pesan</small>
+        </a>
+      </div>
+    </section>
+  </body>
+</html>
