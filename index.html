@@ -34,7 +34,7 @@
         scroll-behavior: smooth;
       }
 
-      /* NAVIGATION */
+      /* NAVIGATION BASE */
       nav {
         position: fixed;
         top: 0;
@@ -45,17 +45,75 @@
         padding: 20px 8%;
         z-index: 1000;
         backdrop-filter: blur(10px);
+        background: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Tambahkan bg sedikit agar teks terbaca */
       }
+
       nav h3 {
         font-weight: 700;
         color: var(--primary);
       }
-      nav a {
+
+      .nav-links a {
         margin-left: 20px;
         text-decoration: none;
         color: var(--dark);
         font-size: 0.9rem;
         font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Sembunyikan Checkbox & Hamburger di Desktop */
+      #check {
+        display: none;
+      }
+
+      .checkbtn {
+        font-size: 24px;
+        color: var(--dark);
+        cursor: pointer;
+        display: none; /* Sembunyi di desktop */
+      }
+
+      /* RESPONSIVE BREAKPOINT (MOBILE) */
+      @media (max-width: 992px) {
+        .checkbtn {
+          display: block; /* Muncul di HP */
+        }
+
+        .nav-links {
+          position: fixed;
+          width: 100%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.95);
+          top: 80px; /* Jarak dari atas navbar */
+          left: -100%; /* Sembunyi di kiri luar layar */
+          text-align: center;
+          transition: all 0.5s;
+          display: flex;
+          flex-direction: column;
+          padding-top: 50px;
+          backdrop-filter: blur(15px);
+        }
+
+        .nav-links a {
+          display: block;
+          margin: 15px 0;
+          font-size: 1.2rem;
+        }
+
+        /* Logika buka menu saat checkbox dicentang */
+        #check:checked ~ .nav-links {
+          left: 0;
+        }
       }
 
       /* HERO SECTION WITH ABSTRACT IMAGE */
@@ -492,7 +550,14 @@
   <body>
     <nav>
       <h3>ZAIDAN.</h3>
-      <div>
+
+      <!-- Tombol Hamburger -->
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+
+      <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
@@ -525,7 +590,9 @@
         <!-- Baris 1: Bergerak ke Kiri -->
         <div class="marquee move-left">
           <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
-          <div class="marquee-item"><i class="fas fa-file-powerpoint"></i> Power Point</div>
+          <div class="marquee-item">
+            <i class="fas fa-file-powerpoint"></i> Power Point
+          </div>
           <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
           <div class="marquee-item">Tailwind CSS</div>
           <div class="marquee-item">Microsoft Word</div>
@@ -556,13 +623,15 @@
           <div class="marquee-item">Document Controller</div>
         </div>
 
-        <!-- Baris 3: Soft Skills (Lambat ke Kiri) --> 
+        <!-- Baris 3: Soft Skills (Lambat ke Kiri) -->
         <div class="marquee move-left-slow">
           <div class="marquee-item">Kerja Tim</div>
           <div class="marquee-item">Komunikasi Efektif</div>
           <div class="marquee-item">Problem Solving</div>
           <div class="marquee-item">Adaptabilitas</div>
-          <div class="marquee-item"><i class="fas fa-file-word"></i>Microsoft Word</div>
+          <div class="marquee-item">
+            <i class="fas fa-file-word"></i>Microsoft Word
+          </div>
           <!-- Duplicate -->
           <div class="marquee-item">Kerja Tim</div>
           <div class="marquee-item">Komunikasi Efektif</div>
@@ -612,9 +681,7 @@
             <div class="project-info">
               <span class="project-tag">Dummy Project</span>
               <h3>Smart Decision System: Pemilihan Pegawai Terbaik</h3>
-              <p>
-                Sistem pemilihan pegawai terbaik menggunakan metode SAW.
-              </p>
+              <p>Sistem pemilihan pegawai terbaik menggunakan metode SAW.</p>
             </div>
           </div>
 
@@ -751,5 +818,17 @@
         </a>
       </div>
     </section>
+
+    <script>
+      // Menutup menu saat link diklik (untuk mobile)
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const checkBtn = document.getElementById("check");
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          checkBtn.checked = false;
+        });
+      });
+    </script>
   </body>
 </html>
