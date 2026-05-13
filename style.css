@@ -1,20 +1,15 @@
-/* AHMAD ZAIDAN PORTFOLIO 
-   THEME: NEO-BRUTALISM UI
-*/
+/* FUTURISTIC GLASSMORPHISM THEME */
 
 :root {
-  --primary: #a3e635; /* Lime Green */
-  --secondary: #ffde59; /* Yellow */
-  --accent: #01bde2; /* Cyan Blue */
-  --white: #ffffff;
-  --black: #000000;
-  --bg: #f4f0eb; /* Soft Off-White */
-  --border-size: 4px;
-  --shadow-size: 8px;
-  --transition: 0.2s ease;
+  --primary: #00f2ff; /* Cyan Neon */
+  --secondary: #7000ff; /* Purple Neon */
+  --bg-dark: #050b18;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #e0e0e0;
+  --text-dim: #a0a0a0;
 }
 
-/* 1. RESET & GLOBAL */
 * {
   margin: 0;
   padding: 0;
@@ -24,174 +19,208 @@
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--black);
+  background: radial-gradient(circle at top right, #0a192f, #050b18);
+  color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.section-padding {
-  padding: 100px 0;
-}
-
-.section-title {
-  font-size: 3rem;
-  margin-bottom: 50px;
-  -webkit-text-stroke: 1.5px var(--black);
-  color: transparent;
-  text-align: left;
-}
-
-/* 2. NAVBAR (ROUNDED & FLOATING) */
+/* 1. NAVBAR GLASSMORPHISM */
 nav {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1100px;
-  background: var(--white);
-  border: var(--border-size) solid var(--black);
-  border-radius: 100px;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 20px 8%;
   z-index: 1000;
-  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
-  transition: var(--transition);
+  background: rgba(5, 11, 24, 0.7);
+  backdrop-filter: blur(15px); /* Efek Glass */
+  border-bottom: 1px solid var(--glass-border);
 }
 
 nav h3 {
-  font-size: 1.5rem;
-  letter-spacing: -1px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links a {
-  margin-left: 20px;
+  margin-left: 25px;
   text-decoration: none;
-  color: var(--black);
-  font-weight: 700;
-  font-size: 0.8rem;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: 0.3s;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--primary);
+  text-shadow: 0 0 10px var(--primary);
 }
 
-#check {
-  display: none;
-}
-.checkbtn {
-  font-size: 24px;
-  cursor: pointer;
-  display: none;
-}
-
-/* 3. HERO SECTION (FIXED SPACING) */
+/* 2. HERO SECTION */
 .hero {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 10%;
   gap: 50px;
-}
-
-.hero-content h1 {
-  font-size: 3.5rem;
-  line-height: 1.3; /* Memperbaiki teks dempet */
-  margin-bottom: 20px;
-}
-
-.hero-content span {
-  display: inline-block;
-  background: var(--primary);
-  padding: 5px 20px;
-  border: var(--border-size) solid var(--black);
-  box-shadow: 6px 6px 0px var(--black);
-  margin: 10px 0;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-top: 20px; /* Jarak agar tidak dempet */
-  margin-bottom: 30px;
-}
-
-.hero-image-container {
   position: relative;
 }
 
-.profile-blob {
-  width: 380px;
-  height: 380px;
+/* Background Glow */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
   background: var(--secondary);
-  border: var(--border-size) solid var(--black);
-  box-shadow: 15px 15px 0px var(--black);
-  transform: rotate(3deg); /* Efek miring sedikit agar tidak kaku */
-  overflow: hidden;
+  filter: blur(150px);
+  top: 20%;
+  left: 10%;
+  z-index: -1;
 }
 
-.profile-blob img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 15px;
+}
+
+.hero-content span {
+  color: var(--primary);
+  text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
 }
 
 .btn {
   display: inline-block;
-  padding: 15px 35px;
-  background: var(--accent);
-  color: var(--black);
+  padding: 12px 35px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
   text-decoration: none;
-  font-weight: 900;
-  border: var(--border-size) solid var(--black);
-  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
-  text-transform: uppercase;
-  transition: var(--transition);
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  border: none;
 }
 
 .btn:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px var(--black);
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.4);
 }
 
-/* 4. SKILLS CAROUSEL (ANIMATED) */
+/* Foto Profil Glass */
+.profile-blob {
+  width: 350px;
+  height: 350px;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  animation: morph 8s ease-in-out infinite;
+
+  /* TAMBAHKAN INI UNTUK MENENGAHKAN ISI */
+  display: flex;
+  justify-content: center; /* Tengah secara horizontal */
+  align-items: center; /* Tengah secara vertikal */
+}
+
+.profile-blob img {
+  /* Pastikan gambar mengisi area blob tanpa merusak rasio */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Memotong bagian tepi agar tetap proporsional */
+  object-position: center; /* Fokus pada bagian tengah foto */
+
+  /* Opsional: Jika foto kamu aslinya sudah kotak dan ingin sedikit mengecil */
+  /* transform: scale(1.1); */
+}
+
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  50% {
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+  }
+}
+
+/* GRID SYSTEM */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* GLASS CARD CORE */
+.glass-card,
+.edu-card-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 25px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--primary);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 242, 255, 0.1);
+}
+
 .skills-section {
-  background: var(--white);
   padding: 80px 0;
-  border-top: var(--border-size) solid var(--black);
-  border-bottom: var(--border-size) solid var(--black);
+  background: rgba(255, 255, 255, 0.01);
+  position: relative;
   overflow: hidden;
 }
 
+/* Container utama marquee */
 .marquee-container {
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
 }
 
 .marquee-row {
   display: flex;
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
+  /* Masking efek pudar di pinggir kiri dan kanan agar lebih estetik */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
 }
 
 .marquee-content {
@@ -200,25 +229,37 @@ nav h3 {
   gap: 20px;
 }
 
+/* Item Skill bergaya Kaca */
 .marquee-item {
-  background: var(--white);
-  border: var(--border-size) solid var(--black);
-  padding: 12px 25px;
-  font-weight: 800;
-  box-shadow: 5px 5px 0px var(--black);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px 30px;
+  border-radius: 15px;
+  color: var(--primary); /* Warna neon cyan */
+  font-weight: 600;
+  font-size: 1rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  transition: 0.3s ease;
 }
 
-/* Animasi Skills */
+.marquee-item i {
+  font-size: 1.2rem;
+  color: var(--secondary); /* Warna ungu neon untuk ikon */
+}
+
+.marquee-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--primary);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+/* Animasi Pergerakan */
 .move-left {
-  animation: scroll-left 25s linear infinite;
-}
-.move-right {
-  animation: scroll-right 30s linear infinite;
-}
-.move-left-slow {
   animation: scroll-left 40s linear infinite;
 }
 
@@ -231,99 +272,486 @@ nav h3 {
   }
 }
 
-@keyframes scroll-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+/* Berhenti saat hover agar bisa dibaca */
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+/* --- END SKILLS SECTION */
+
+/* --- EXPERIENCE SECTION (GLASSMORPHISM) --- */
+
+.experience-grid {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
-/* 5. EDUCATION, PROJECT, CERT GRID */
+.main-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dekorasi cahaya di pojok kartu */
+.main-card::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: var(--secondary);
+  filter: blur(70px);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.main-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Badge Gaya Futuristik */
+.badge-blue {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 242, 255, 0.3);
+}
+
+.main-card h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.main-card .text-muted {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  display: block;
+}
+
+/* List Deskripsi */
+.list-desc {
+  list-style: none; /* Hilangkan bullet standar */
+  padding-left: 0;
+}
+
+.list-desc li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+/* Bullet Point Custom Gaya Neon */
+.list-desc li::before {
+  content: "→"; /* Gunakan panah atau dot */
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+  text-shadow: 0 0 8px var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-card {
+    padding: 30px 20px;
+  }
+
+  .main-card h3 {
+    font-size: 1.4rem;
+  }
+}
+/* --- END EXPERIENCE SECTION */
+
+/* --- EDUCATION SECTION (GLASSMORPHISM) --- */
+
+#education {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Glow Efek untuk kedalaman */
+#education::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: var(--primary);
+  filter: blur(180px);
+  bottom: -10%;
+  right: -5%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
 .edu-card-custom {
   display: flex;
   align-items: center;
   gap: 50px;
-  background: var(--white);
-  border: var(--border-size) solid var(--black);
-  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
-  padding: 40px;
+  background: rgba(255, 255, 255, 0.03); /* Transparansi Kaca */
+  backdrop-filter: blur(15px); /* Efek blur di belakang */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Kilau tepi kaca */
+  border-radius: 30px;
+  padding: 50px;
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease;
 }
 
+.edu-card-custom:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Container Gambar */
 .edu-img-wrapper {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
 .edu-img-wrapper img {
   width: 100%;
-  border: var(--border-size) solid var(--black);
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
+
+.edu-card-custom:hover .edu-img-wrapper img {
+  transform: scale(1.05); /* Zoom halus saat hover */
+}
+
+/* Konten Teks */
 .edu-info-content {
   flex: 2;
 }
 
-.project-grid-3,
-.cert-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+.highlight-text {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
 }
 
-.project-card,
-.cert-item-card,
-.main-card {
-  background: var(--white);
-  border: var(--border-size) solid var(--black);
-  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
-  transition: var(--transition);
+.sub-heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+
+.text-muted {
+  font-size: 1rem;
+  color: var(--primary); /* Warna neon untuk info penting */
+  font-weight: 500;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+
+.description {
+  margin-top: 20px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 992px) {
+  .edu-card-custom {
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .edu-img-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+  }
+
+  .highlight-text {
+    font-size: 1.8rem;
+  }
+}
+
+/* End style education */
+
+/* --- PROJECTS SECTION (GLASSMORPHISM) --- */
+
+.project-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.project-card:hover,
-.cert-item-card:hover {
-  transform: translate(-5px, -5px);
-  box-shadow: 15px 15px 0px var(--black);
+.project-card:hover {
+  transform: translateY(-12px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary); /* Glow Cyan */
+  box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15);
 }
 
-.project-img-container,
-.cert-img-box {
+/* Image Container */
+.project-img-container {
   width: 100%;
   height: 220px;
-  border-bottom: var(--border-size) solid var(--black);
   overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.project-img-container img,
-.cert-img-box img {
+.project-img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s ease;
 }
 
-.project-info,
-.cert-body,
-.main-card {
+.project-card:hover .project-img-container img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Info Content */
+.project-info {
   padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.project-tag,
-.badge-blue {
-  background: var(--primary);
-  border: 2px solid var(--black);
-  padding: 3px 12px;
-  font-weight: 800;
-  font-size: 0.75rem;
+.project-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(0, 242, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  display: inline-block;
+  margin-bottom: 15px;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+.project-info h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover h3 {
+  color: var(--primary);
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* Responsif Fix */
+@media (max-width: 768px) {
+  .project-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+/* end style projects */
+
+/* --- CERTIFICATIONS SECTION (GLASSMORPHISM) --- */
+
+.cert-grid-3 {
+  display: grid;
+  /* Menggunakan grid 4 kolom untuk layar lebar agar lebih efisien */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.cert-item-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  transition: all 0.4s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cert-item-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--secondary); /* Glow Ungu/Cyan */
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(112, 0, 255, 0.15);
+}
+
+/* Kotak Gambar Sertifikat */
+.cert-img-box {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.cert-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Menjaga agar sertifikat tidak terpotong */
+  padding: 10px; /* Memberi ruang napas untuk gambar sertifikat */
+  transition: transform 0.5s ease;
+}
+
+.cert-item-card:hover .cert-img-box img {
+  transform: scale(1.1);
+}
+
+/* Teks Sertifikat */
+.cert-body h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cert-body p {
+  font-size: 0.85rem;
+  color: var(--primary); /* Menggunakan warna aksen neon */
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Responsif Fix */
+@media (max-width: 600px) {
+  .cert-grid-3 {
+    grid-template-columns: 1fr; /* Satu kolom di HP */
+  }
+
+  .cert-item-card {
+    padding: 15px;
+  }
+}
+/* End style certifications */
+
+/* BADGES & TAGS */
+.glass-badge,
+.tag {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  padding: 4px 15px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
   display: inline-block;
   margin-bottom: 10px;
 }
 
-/* 6. CONTACT (CENTERED) */
+/* SKILLS MARQUEE */
+/* .marquee-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 25px;
+  border-radius: 15px;
+  color: var(--primary);
+  font-weight: 600;
+} */
+
+/* --- CONTACT SECTION (GLASSMORPHISM) --- */
+
 .contact {
-  background: var(--secondary);
-  padding: 100px 5%;
+  padding: 100px 8%;
   text-align: center;
-  border-top: var(--border-size) solid var(--black);
+  position: relative;
+}
+
+/* Penambahan hiasan cahaya di latar belakang */
+.contact::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--secondary);
+  filter: blur(150px);
+  bottom: 0;
+  right: 10%;
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #fff, var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact p {
+  color: var(--text-dim);
+  margin-bottom: 50px;
 }
 
 .contact-grid {
@@ -331,72 +759,212 @@ nav h3 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin-top: 40px;
 }
 
 .contact-card {
-  background: var(--white);
-  border: var(--border-size) solid var(--black);
-  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 40px 30px;
   width: 280px;
   text-decoration: none;
-  color: var(--black);
-  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
-  transition: var(--transition);
-}
-
-.contact-card:hover {
-  background: var(--accent);
-  transform: translate(-5px, -5px);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .contact-card i {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.contact-card span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.contact-card small {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+/* Efek Hover Glassmorphism */
+.contact-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 242, 255, 0.2);
+}
+
+.contact-card:hover i {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px var(--primary));
+}
+/* End style contact */
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .edu-card-glass {
+    flex-direction: column;
+    text-align: center;
+  }
+  .edu-img {
+    width: 100%;
+  }
+}
+
+/* 3. SKILLS MARQUEE */
+.skills-section {
+  padding: 60px 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.marquee-item {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(5px);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: var(--primary);
+}
+
+/* 4. CARDS (Glassmorphism Effect) */
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: 3px;
+}
+
+.edu-card-custom,
+.project-card,
+.main-card,
+.cert-item-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  transition: 0.4s;
+}
+
+.project-card:hover,
+.cert-item-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--primary);
+  transform: translateY(-10px);
+}
+
+.project-img-container,
+.cert-img-box {
+  border-radius: 15px;
+  overflow: hidden;
   margin-bottom: 15px;
 }
 
-/* 7. RESPONSIVE */
+/* 5. CONTACT */
+.contact-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.contact-card:hover {
+  border-color: var(--secondary);
+  background: rgba(112, 0, 255, 0.1);
+}
+
+/* 6. MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-content h1 {
+    margin-top: 2.5rem;
+    font-size: 2.5rem;
+  }
+  .profile-blob {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* Sembunyikan checkbox secara permanen */
+#check {
+  display: none;
+}
+
+/* Sembunyikan ikon hamburger di layar laptop/desktop */
+.checkbtn {
+  display: none;
+  font-size: 30px;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+/* Tampilkan hamburger HANYA saat layar kecil (Mobile) */
+/* --- RESPONSIVE MOBILE (Layar di bawah 992px) --- */
 @media (max-width: 992px) {
   .checkbtn {
-    display: block;
+    display: block; /* Hamburger muncul di HP */
   }
 
   .nav-links {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: var(--white);
-    top: 80px;
-    left: -100%;
+    background: rgba(5, 11, 24, 0.95); /* Background gelap transparan */
+    backdrop-filter: blur(20px);
+    top: 70px; /* Sesuaikan dengan tinggi navbar */
+    left: -100%; /* Sembunyi di luar layar kiri */
     text-align: center;
-    transition: 0.5s;
     display: flex;
     flex-direction: column;
     padding-top: 50px;
-    border-top: var(--border-size) solid var(--black);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
+  .nav-links a {
+    display: block;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  /* LOGIKA RESPONSIVE: Jika checkbox dicentang, menu geser ke kanan */
   #check:checked ~ .nav-links {
     left: 0;
   }
 
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding-top: 150px;
-    height: auto;
-  }
-
-  .profile-blob {
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-  }
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-  .edu-card-custom {
-    flex-direction: column;
-    text-align: center;
+  /* Efek animasi hamburger saat diklik (opsional) */
+  #check:checked ~ .checkbtn i::before {
+    content: "\f00d"; /* Mengubah ikon bars menjadi 'X' (FontAwesome) */
   }
 }

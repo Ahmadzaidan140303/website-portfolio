@@ -1,21 +1,24 @@
-document.addEventListener("scroll", function () {
-  const scrollPos = window.pageYOffset;
+// Efek Parallax Tilt pada kartu
+const cards = document.querySelectorAll(".project-card, .cert-item-card");
 
-  // Parallax Effect untuk H1 di Hero
-  const heroTitle = document.querySelector(".hero-content h1");
-  if (heroTitle) {
-    heroTitle.style.transform = `translateY(${scrollPos * 0.3}px)`;
-  }
+cards.forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
+    let x = e.pageX - card.offsetLeft;
+    let y = e.pageY - card.offsetTop;
 
-  // Navbar Shadow Animation on Scroll
-  const nav = document.querySelector("nav");
-  if (scrollPos > 50) {
-    nav.style.boxShadow = "4px 4px 0px #000";
-    nav.style.top = "10px";
-  } else {
-    nav.style.boxShadow = "8px 8px 0px #000";
-    nav.style.top = "20px";
-  }
+    let centerX = card.offsetWidth / 2;
+    let centerY = card.offsetHeight / 2;
+
+    let deltaX = x - centerX;
+    let deltaY = y - centerY;
+
+    let percentX = deltaX / centerX;
+    let percentY = deltaY / centerY;
+
+    card.style.transform = `perspective(1000px) rotateX(${percentY * 5}deg) rotateY(${-percentX * 5}deg) translateY(-10px)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+  });
 });
-
-// Logic untuk menutup menu mobile sudah ada di HTML kamu, itu sudah benar.
