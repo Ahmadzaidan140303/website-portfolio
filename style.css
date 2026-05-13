@@ -1,0 +1,469 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/* NEO-BRUTALISM SETUP */
+:root {
+  --primary: #a3e635; /* Hijau Stabilo */
+  --secondary: #ffde59; /* Kuning */
+  --accent: #01bde2; /* Biru */
+  --white: #ffffff;
+  --black: #000000;
+  --bg: #f4f0eb;
+  --border-size: 4px;
+  --shadow-size: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--black);
+  line-height: 1.6;
+}
+
+/* NAVBAR - ROUNDED & FLOATING */
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  z-index: 1000;
+  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
+}
+
+nav h3 {
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  gap: 50px;
+  background: var(--bg);
+}
+
+/* Update pada bagian Hero Content */
+.hero-content h1 {
+  font-size: 3.5rem; /* Ukuran font disesuaikan */
+  font-weight: 900;
+  line-height: 1.4; /* Memberikan spasi antar baris agar tidak dempet */
+  margin-bottom: 20px; /* Jarak antara judul dan deskripsi */
+  color: var(--black);
+}
+
+.hero-content span {
+  display: inline-block; /* Penting agar margin/padding kotak berfungsi baik */
+  background: var(--primary);
+  padding: 5px 15px;
+  border: var(--border-size) solid var(--black);
+  box-shadow: 6px 6px 0px var(--black);
+  margin-top: 10px; /* Jarak tambahan di atas kotak nama */
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 25px; /* Jarak antara kotak nama dan teks deskripsi */
+  margin-bottom: 30px; /* Jarak antara deskripsi dan tombol CV */
+  letter-spacing: 0.5px;
+}
+
+/* Memperbaiki posisi tombol agar tidak terlalu dekat dengan teks di atasnya */
+.hero-content .btn {
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 35px;
+  background: var(--accent);
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 900;
+  border: var(--border-size) solid var(--black);
+  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 11px 11px 0px var(--black);
+}
+
+/* PROFILE PHOTO (NEO-BRUTALISM STYLE) */
+.profile-blob {
+  width: 350px;
+  height: 350px;
+  background: var(--secondary);
+  border: var(--border-size) solid var(--black);
+  box-shadow: 15px 15px 0px var(--black);
+  overflow: hidden;
+  transform: rotate(-3deg);
+}
+
+.profile-blob img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MARQUEE SKILLS */
+.skills-section {
+  padding: 80px 0;
+  background: var(--white);
+  border-top: var(--border-size) solid var(--black);
+  border-bottom: var(--border-size) solid var(--black);
+  overflow: hidden;
+}
+
+.marquee-item {
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  padding: 10px 25px;
+  margin: 0 10px;
+  font-weight: 800;
+  box-shadow: 4px 4px 0px var(--black);
+}
+
+/* CARDS (Education, Project, Cert, Experience) */
+/* --- GLOBAL CONTAINER --- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+/* --- EDUCATION (Flex Layout) --- */
+.edu-card-custom {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
+  padding: 40px;
+}
+
+.edu-img-wrapper {
+  flex: 1;
+  min-width: 250px;
+}
+
+.edu-img-wrapper img {
+  width: 100%;
+  border: var(--border-size) solid var(--black);
+  display: block;
+}
+
+.edu-info-content {
+  flex: 2;
+}
+
+.highlight-text {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+/* --- PROJECTS & CERTIFICATIONS (3 & 4 Columns Grid) --- */
+.project-grid-3,
+.cert-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Khusus Sertifikat jika ingin 4 kolom di layar lebar */
+@media (min-width: 1200px) {
+  .cert-grid-3 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.project-card,
+.cert-item-card {
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--black);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Agar tinggi kartu sama */
+}
+
+.project-img-container,
+.cert-img-box {
+  width: 100%;
+  height: 200px;
+  border-bottom: var(--border-size) solid var(--black);
+  overflow: hidden;
+}
+
+.project-img-container img,
+.cert-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info,
+.cert-body {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+/* --- EXPERIENCE (Single/Grid Card) --- */
+.main-card {
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  box-shadow: 12px 12px 0px var(--black);
+  padding: 40px;
+  position: relative;
+}
+
+.main-card h3 {
+  font-size: 1.8rem;
+  margin: 15px 0 5px 0;
+}
+
+.badge-blue {
+  display: inline-block;
+  background: var(--primary);
+  border: 2px solid var(--black);
+  padding: 5px 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.list-desc {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.list-desc li {
+  margin-bottom: 10px;
+}
+
+/* --- RESPONSIVE FIX --- */
+@media (max-width: 768px) {
+  .edu-card-custom {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .edu-img-wrapper {
+    width: 100%;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* --- SKILLS CAROUSEL (MARQUEE) --- */
+.skills-section {
+  background: var(--white);
+  padding: 60px 0;
+  border-top: var(--border-size) solid var(--black);
+  border-bottom: var(--border-size) solid var(--black);
+  overflow: hidden; /* Sembunyikan bagian yang keluar layar */
+}
+
+.marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Jarak antar baris */
+}
+
+.marquee-row {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  gap: 20px;
+}
+
+/* Animasi */
+.move-left {
+  animation: scroll-left 25s linear infinite;
+}
+
+.move-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.move-left-slow {
+  animation: scroll-left 40s linear infinite;
+}
+
+/* Keyframes Gerak Kiri */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  } /* Berhenti di tengah karena konten diduplikasi */
+}
+
+/* Keyframes Gerak Kanan */
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Item Skill Neo-Brutalism */
+.marquee-item {
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  padding: 15px 30px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0px var(--black);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px; /* Memberi ruang bayangan agar tidak terpotong */
+}
+
+.marquee-item i {
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+/* Pause saat di-hover */
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+/* GRID LAYOUTS */
+.project-grid-3,
+.cert-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* CONTACT SECTION */
+.contact {
+  text-align: center;
+  background: var(--secondary);
+  padding: 100px 10%;
+  border-top: var(--border-size) solid var(--black);
+}
+
+.contact-card {
+  background: var(--white);
+  border: var(--border-size) solid var(--black);
+  padding: 30px;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 800;
+  box-shadow: 8px 8px 0px var(--black);
+  transition: 0.2s;
+}
+
+.contact-card:hover {
+  background: var(--primary);
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px var(--black);
+}
+
+/* HAMBURGER FOR MOBILE */
+.checkbtn {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#check {
+  display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .checkbtn {
+    display: block;
+  }
+  .nav-links {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: var(--white);
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: 0.5s;
+    border-top: var(--border-size) solid var(--black);
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+  }
+  #check:checked ~ .nav-links {
+    left: 0;
+  }
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 150px;
+    height: auto;
+  }
+  .profile-blob {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .edu-card-custom {
+    flex-direction: column;
+  }
+}

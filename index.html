@@ -12,540 +12,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <style>
-      :root {
-        --primary: #01bde2;
-        --dark: #0f172a;
-        --light: #f8fafc;
-        --card-bg: rgba(255, 255, 255, 0.8);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-      body {
-        background-color: var(--light);
-        color: var(--dark);
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-      }
-
-      /* NAVIGATION BASE */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 8%;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-        background: rgba(
-          255,
-          255,
-          255,
-          0.8
-        ); /* Tambahkan bg sedikit agar teks terbaca */
-      }
-
-      nav h3 {
-        font-weight: 700;
-        color: var(--primary);
-      }
-
-      .nav-links a {
-        margin-left: 20px;
-        text-decoration: none;
-        color: var(--dark);
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: var(--primary);
-      }
-
-      /* Sembunyikan Checkbox & Hamburger di Desktop */
-      #check {
-        display: none;
-      }
-
-      .checkbtn {
-        font-size: 24px;
-        color: var(--dark);
-        cursor: pointer;
-        display: none; /* Sembunyi di desktop */
-      }
-
-      /* RESPONSIVE BREAKPOINT (MOBILE) */
-      @media (max-width: 992px) {
-        .checkbtn {
-          display: block; /* Muncul di HP */
-        }
-
-        .nav-links {
-          position: fixed;
-          width: 100%;
-          height: 100vh;
-          background: rgba(255, 255, 255, 0.95);
-          top: 80px; /* Jarak dari atas navbar */
-          left: -100%; /* Sembunyi di kiri luar layar */
-          text-align: center;
-          transition: all 0.5s;
-          display: flex;
-          flex-direction: column;
-          padding-top: 50px;
-          backdrop-filter: blur(15px);
-        }
-
-        .nav-links a {
-          display: block;
-          margin: 15px 0;
-          font-size: 1.2rem;
-        }
-
-        /* Logika buka menu saat checkbox dicentang */
-        #check:checked ~ .nav-links {
-          left: 0;
-        }
-      }
-
-      /* HERO SECTION WITH ABSTRACT IMAGE */
-      .hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 8%;
-        gap: 50px;
-      }
-
-      .hero-content {
-        flex: 1;
-      }
-      .hero-content h1 {
-        font-size: 3.5rem;
-        line-height: 1.2;
-        margin-bottom: 20px;
-      }
-      .hero-content span {
-        color: var(--primary);
-      }
-
-      .hero-image-container {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        position: relative;
-      }
-
-      /* Bingkai Foto Abstrak */
-      .profile-blob {
-        width: 350px;
-        height: 350px;
-        background: var(--primary);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; /* Bentuk abstrak */
-        position: relative;
-        overflow: hidden;
-        animation: blob-anim 8s ease-in-out infinite alternate;
-        border: 5px solid white;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      .profile-blob img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      @keyframes blob-anim {
-        from {
-          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-        }
-        to {
-          border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-        }
-      }
-
-      /* SKILLS CAROUSEL (3 ROWS) */
-      .skills-section {
-        padding: 100px 0;
-        background: #fff;
-        overflow: hidden;
-      }
-      .skills-section h2 {
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      .marquee-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .marquee {
-        display: flex;
-        user-select: none;
-        gap: 20px;
-        width: fit-content;
-      }
-
-      .marquee-item {
-        padding: 15px 30px;
-        background: var(--light);
-        border: 1px solid #e2e8f0;
-        border-radius: 50px;
-        font-weight: 600;
-        white-space: nowrap;
-        transition: 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .marquee-item:hover {
-        border-color: var(--primary);
-        color: var(--primary);
-        transform: translateY(-5px);
-      }
-
-      /* Animasi Gerak */
-      .move-left {
-        animation: scroll-left 30s linear infinite;
-      }
-      .move-right {
-        animation: scroll-right 35s linear infinite;
-      }
-      .move-left-slow {
-        animation: scroll-left 45s linear infinite;
-      }
-
-      @keyframes scroll-left {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
-      }
-
-      @keyframes scroll-right {
-        from {
-          transform: translateX(-50%);
-        }
-        to {
-          transform: translateX(0);
-        }
-      }
-
-      /* GET IN TOUCH (CENTERED) */
-      .contact {
-        padding: 100px 8%;
-        text-align: center;
-        background: var(--dark);
-        color: white;
-      }
-
-      .contact-grid {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-top: 40px;
-      }
-
-      .contact-card {
-        color: white;
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 20px;
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.05);
-        min-width: 200px;
-        transition: 0.3s;
-      }
-
-      .contact-card:hover {
-        background: var(--primary);
-        transform: translateY(-10px);
-      }
-
-      .contact-card i {
-        font-size: 2rem;
-      }
-
-      .btn {
-        display: inline-block;
-        margin-top: 25px;
-        padding: 12px 30px;
-        background: var(--primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-      }
-
-      /* Responsif */
-      @media (max-width: 768px) {
-        .hero {
-          flex-direction: column-reverse;
-          text-align: center;
-          padding-top: 120px;
-        }
-        .hero-content h1 {
-          font-size: 2.5rem;
-        }
-        .profile-blob {
-          width: 250px;
-          height: 250px;
-        }
-      }
-
-      /* Container & Global Spacing */
-      .container {
-        width: 85%;
-        margin: 0 auto;
-      }
-      .section-padding {
-        padding: 80px 0;
-      }
-      .section-title {
-        font-size: 2rem;
-        margin-bottom: 40px;
-        position: relative;
-      }
-      .section-title::after {
-        content: "";
-        display: block;
-        width: 50px;
-        height: 4px;
-        background: var(--primary);
-        margin-top: 10px;
-      }
-
-      /* Pendidikan Perbaikan */
-      .edu-card-custom {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      }
-      .edu-img-wrapper {
-        flex: 1;
-        min-width: 300px;
-      }
-      .edu-img-wrapper img {
-        width: 100%;
-        border-radius: 15px;
-        display: block;
-      }
-      .edu-info-content {
-        flex: 2;
-      }
-      .highlight-text {
-        color: var(--primary);
-        font-size: 1.8rem;
-      }
-      .sub-heading {
-        font-weight: 600;
-        font-size: 1.1rem;
-      }
-      .text-muted {
-        color: #64748b;
-        font-size: 0.9rem;
-      }
-
-      /* Pengalaman Perbaikan */
-      .main-card {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        border-left: 5px solid var(--primary);
-      }
-      .badge-blue {
-        background: rgba(1, 189, 226, 0.1);
-        color: var(--primary);
-        padding: 5px 15px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 700;
-      }
-      .list-desc {
-        margin-top: 20px;
-        padding-left: 20px;
-      }
-
-      /* Sertifikasi 3 Kolom Perbaikan */
-      #certifications {
-        background: #fff;
-      }
-      .cert-grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Paksa 3 Kolom */
-        gap: 25px;
-      }
-      .cert-item-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        transition: 0.3s;
-      }
-      .cert-item-card:hover {
-        transform: translateY(-10px);
-      }
-      .cert-img-box {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-      }
-      .cert-img-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .cert-body {
-        padding: 20px;
-      }
-
-      /* Responsive Mobile */
-      @media (max-width: 992px) {
-        .cert-grid-3 {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .edu-card-custom {
-          flex-direction: column;
-        }
-      }
-      @media (max-width: 600px) {
-        .cert-grid-3 {
-          grid-template-columns: 1fr;
-        }
-        .container {
-          width: 90%;
-        }
-      }
-
-      /* Projects Grid 3 Column */
-      #project {
-        background: #fff;
-      }
-      .project-grid-3 {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-      }
-
-      .project-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
-      .project-img-container {
-        position: relative;
-        width: 100%;
-        height: 220px;
-        overflow: hidden;
-      }
-
-      .project-img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .project-card:hover .project-img-container img {
-        transform: scale(1.1);
-      }
-
-      /* Overlay Effect */
-      .project-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(1, 189, 226, 0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .project-card:hover .project-overlay {
-        opacity: 1;
-      }
-
-      .view-project {
-        color: white;
-        font-weight: 600;
-        padding: 10px 20px;
-        border: 2px solid white;
-        border-radius: 50px;
-      }
-
-      .project-info {
-        padding: 25px;
-      }
-
-      .project-tag {
-        font-size: 0.75rem;
-        color: var(--primary);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 10px;
-      }
-
-      .project-info h3 {
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-      }
-
-      .project-info p {
-        font-size: 0.9rem;
-        color: #64748b;
-        line-height: 1.6;
-      }
-
-      /* Responsif untuk Project */
-      @media (max-width: 992px) {
-        .project-grid-3 {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 650px) {
-        .project-grid-3 {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav>
@@ -584,60 +51,74 @@
     </section>
 
     <section id="skills" class="skills-section">
-      <h2>Expertise & Skills</h2>
+      <h2
+        class="section-title"
+        style="
+          text-align: center;
+          color: var(--black);
+          -webkit-text-stroke: 0;
+          margin-bottom: 20px;
+        "
+      >
+        Expertise & Skills
+      </h2>
 
       <div class="marquee-container">
-        <!-- Baris 1: Bergerak ke Kiri -->
-        <div class="marquee move-left">
-          <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
-          <div class="marquee-item">
-            <i class="fas fa-file-powerpoint"></i> Power Point
+        <div class="marquee-row">
+          <div class="marquee-content move-left">
+            <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="marquee-item">
+              <i class="fas fa-file-powerpoint"></i> Power Point
+            </div>
+            <div class="marquee-item">
+              <i class="fab fa-laravel"></i> Laravel
+            </div>
+            <div class="marquee-item">Tailwind CSS</div>
+            <div class="marquee-item">Microsoft Word</div>
+            <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="marquee-item">
+              <i class="fas fa-file-powerpoint"></i> Power Point
+            </div>
+            <div class="marquee-item">
+              <i class="fab fa-laravel"></i> Laravel
+            </div>
+            <div class="marquee-item">Tailwind CSS</div>
+            <div class="marquee-item">Microsoft Word</div>
           </div>
-          <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
-          <div class="marquee-item">Tailwind CSS</div>
-          <div class="marquee-item">Microsoft Word</div>
-          <!-- Duplicate untuk efek infinite loop -->
-          <div class="marquee-item"><i class="fab fa-html5"></i> HTML5</div>
-          <div class="marquee-item"><i class="fab fa-css3-alt"></i> CSS3</div>
-          <div class="marquee-item"><i class="fab fa-laravel"></i> Laravel</div>
-          <div class="marquee-item">Tailwind CSS</div>
-          <div class="marquee-item">Microsoft Word</div>
         </div>
 
-        <!-- Baris 2: Bergerak ke Kanan -->
-        <div class="marquee move-right">
-          <div class="marquee-item">
-            <i class="fas fa-file-excel"></i> Microsoft Excel
+        <div class="marquee-row">
+          <div class="marquee-content move-right">
+            <div class="marquee-item">
+              <i class="fas fa-file-excel"></i> Microsoft Excel
+            </div>
+            <div class="marquee-item">Canva Design</div>
+            <div class="marquee-item">Google Workspace</div>
+            <div class="marquee-item">Data Entry</div>
+            <div class="marquee-item">Document Controller</div>
+            <div class="marquee-item">
+              <i class="fas fa-file-excel"></i> Microsoft Excel
+            </div>
+            <div class="marquee-item">Canva Design</div>
+            <div class="marquee-item">Google Workspace</div>
+            <div class="marquee-item">Data Entry</div>
+            <div class="marquee-item">Document Controller</div>
           </div>
-          <div class="marquee-item">Canva Design</div>
-          <div class="marquee-item">Google Workspace</div>
-          <div class="marquee-item">Data Entry</div>
-          <div class="marquee-item">Document Controller</div>
-          <!-- Duplicate -->
-          <div class="marquee-item">
-            <i class="fas fa-file-excel"></i> Microsoft Excel
-          </div>
-          <div class="marquee-item">Canva Design</div>
-          <div class="marquee-item">Google Workspace</div>
-          <div class="marquee-item">Data Entry</div>
-          <div class="marquee-item">Document Controller</div>
         </div>
 
-        <!-- Baris 3: Soft Skills (Lambat ke Kiri) -->
-        <div class="marquee move-left-slow">
-          <div class="marquee-item">Kerja Tim</div>
-          <div class="marquee-item">Komunikasi Efektif</div>
-          <div class="marquee-item">Problem Solving</div>
-          <div class="marquee-item">Adaptabilitas</div>
-          <div class="marquee-item">
-            <i class="fas fa-file-word"></i>Microsoft Word
+        <div class="marquee-row">
+          <div class="marquee-content move-left-slow">
+            <div class="marquee-item">Kerja Tim</div>
+            <div class="marquee-item">Komunikasi Efektif</div>
+            <div class="marquee-item">Problem Solving</div>
+            <div class="marquee-item">Adaptabilitas</div>
+            <div class="marquee-item">Fast Learner</div>
+            <div class="marquee-item">Kerja Tim</div>
+            <div class="marquee-item">Komunikasi Efektif</div>
+            <div class="marquee-item">Problem Solving</div>
+            <div class="marquee-item">Adaptabilitas</div>
+            <div class="marquee-item">Fast Learner</div>
           </div>
-          <!-- Duplicate -->
-          <div class="marquee-item">Kerja Tim</div>
-          <div class="marquee-item">Komunikasi Efektif</div>
-          <div class="marquee-item">Problem Solving</div>
-          <div class="marquee-item">Adaptabilitas</div>
-          <div class="marquee-item">Fast Learner</div>
         </div>
       </div>
     </section>
@@ -819,16 +300,6 @@
       </div>
     </section>
 
-    <script>
-      // Menutup menu saat link diklik (untuk mobile)
-      const navLinks = document.querySelectorAll(".nav-links a");
-      const checkBtn = document.getElementById("check");
-
-      navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          checkBtn.checked = false;
-        });
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
